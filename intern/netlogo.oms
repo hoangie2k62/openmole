@@ -1,5 +1,6 @@
 val seed = Val[Int]
 val date = Val[Double]
+val gnb_sow = Val[Double]
 
 val nb_S = Val[Double]
 val nb_IN = Val[Double]
@@ -15,7 +16,7 @@ val nb_CP_o = Val[Double]
 val cmds = List(
   "random-seed ${seed}",
   "setup",
-  "while[ticks <= ${date}][go]")
+  "while[today <= ${date}][go]")
             
 val netLogoTask = NetLogo6Task(
     workDirectory/".aHerd.nlogo",
@@ -23,6 +24,7 @@ val netLogoTask = NetLogo6Task(
     embedWorkspace = true
 ) set (
   (inputs, outputs) += (seed, date),
+  inputs += gnb_sow mapped "gnb_sow",
   
   outputs += nb_S mapped "nb_S",
   outputs += nb_IN mapped "nb_IN",
@@ -37,13 +39,14 @@ val netLogoTask = NetLogo6Task(
 
 val csvHook = CSVHook(
     workDirectory/"results.csv", 
-    values = Seq(date, nb_S, nb_IN, nb_IP, nb_CP, nb_S_o, nb_IN_o, nb_IP_o, nb_CP_o, seed),
-    header = "date, nb_S, nb_IN, nb_IP, nb_CP, nb_S_o, nb_IN_o, nb_IP_o, nb_CP_o, seed", 
+    values = Seq(gnb_sow, date, nb_S, nb_IN, nb_IP, nb_CP, nb_S_o, nb_IN_o, nb_IP_o, nb_CP_o, seed),
+    header = "nb_sow, date, nb_S, nb_IN, nb_IP, nb_CP, nb_S_o, nb_IN_o, nb_IP_o, nb_CP_o, seed", 
     arrayOnRow = true)
 
 val program = DirectSampling(
     evaluation = netLogoTask,
-    sampling =  (date in List(122.0, 147.0, 154.0)) x
+    sampling =  (gnb_sow in (1.0 to 10.0 by 1.0)) x
+                (date in List(122.0, 147.0, 154.0)) x
                 (seed in (UniformDistribution[Int](max = 10) take 10))
 )
 

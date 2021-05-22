@@ -122,10 +122,10 @@ to init-turtles
 end
 
 to setup-maps
-  set myRoad gis:load-dataset "../includes/Thaiha_line.shp"
-  set myRoadS gis:load-dataset "../includes/Thaiha_S.shp"
-  set myRoadPW gis:load-dataset "../includes/Thaiha_PW.shp"
-  set myRoadF gis:load-dataset "../includes/Thaiha_F.shp"
+  set myRoad gis:load-dataset "./includes/Thaiha_line.shp"
+  set myRoadS gis:load-dataset "./includes/Thaiha_S.shp"
+  set myRoadPW gis:load-dataset "./includes/Thaiha_PW.shp"
+  set myRoadF gis:load-dataset "./includes/Thaiha_F.shp"
   gis:set-world-envelope (gis:envelope-union-of (gis:envelope-of myRoad) (gis:envelope-of myRoadS) (gis:envelope-of myRoadPW) (gis:envelope-of myRoadF))
 
   set roomS (patches gis:intersecting myRoadS)
@@ -539,21 +539,6 @@ nb_CP_o
 1
 11
 
-SLIDER
-16
-136
-188
-169
-gnb_sow
-gnb_sow
-2
-300
-2.0
-1
-1
-NIL
-HORIZONTAL
-
 BUTTON
 1435
 2274
@@ -570,6 +555,21 @@ NIL
 NIL
 NIL
 1
+
+SLIDER
+15
+142
+187
+175
+gnb_sow
+gnb_sow
+1
+300
+41.0
+1
+1
+NIL
+HORIZONTAL
 
 @#$#@#$#@
 ## WHAT IS IT?
@@ -913,7 +913,7 @@ false
 Polygon -7500403 true true 270 75 225 30 30 225 75 270
 Polygon -7500403 true true 30 75 75 30 270 225 225 270
 @#$#@#$#@
-NetLogo 6.2.0
+NetLogo 6.0.4
 @#$#@#$#@
 @#$#@#$#@
 @#$#@#$#@
