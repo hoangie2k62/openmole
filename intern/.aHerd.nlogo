@@ -45,6 +45,7 @@ turtles-own[
   is_IN?
   is_IP?
   is_CP?
+  gioi_tinh
   room
 ]
 
@@ -71,7 +72,7 @@ to go
     relocate
 
     if (is_sow? and age = 326) or (is_sow? = false and age = 179) [finish]
-    if ticks mod 24 = 0 and nb_sow > 0 and is_sow? = false and age = 172 [prepare]
+    if ticks mod 24 = 0 and nb_sow > 0 and is_sow? = false and age = 172 and gioi_tinh = 0 [prepare]
     if (is_S? = false) [infect]
     if (is_IN?) [transf_IN_IP]
     if (is_IP?) [transf_IP_CP]
@@ -118,6 +119,8 @@ to init-turtles
   set is_IN? false
   set is_IP? false
   set is_CP? false
+  ;; 0 là cái, 1 đực
+  set gioi_tinh (random 1)
   set room 0
 end
 
@@ -913,7 +916,7 @@ false
 Polygon -7500403 true true 270 75 225 30 30 225 75 270
 Polygon -7500403 true true 30 75 75 30 270 225 225 270
 @#$#@#$#@
-NetLogo 6.0.4
+NetLogo 6.2.0
 @#$#@#$#@
 @#$#@#$#@
 @#$#@#$#@
