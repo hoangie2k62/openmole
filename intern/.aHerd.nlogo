@@ -417,7 +417,7 @@ PLOT
 22
 1063
 182
-Trong Chuong
+IN CAGE
 day
 count
 1.0
@@ -438,7 +438,7 @@ PLOT
 203
 1064
 353
-Xuat chuong
+TO ESCAPE 
 time
 count
 0.0
@@ -568,7 +568,7 @@ gnb_sow
 gnb_sow
 1
 300
-41.0
+5.0
 1
 1
 NIL
