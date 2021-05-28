@@ -57,7 +57,6 @@ to setup
   set nb_IN c_nb_IN
   set nb_IP c_nb_IP
   set nb_CP c_nb_CP
-  set-default-shape turtles "circle"
   reset-ticks
 end
 
@@ -119,8 +118,12 @@ to init-turtles
   set is_IN? false
   set is_IP? false
   set is_CP? false
+
   ;; 0 là cái, 1 đực
   set gioi_tinh (random 1)
+  if (gioi_tinh = 0) [set shape "circle"]
+  if (gioi_tinh = 1) [set shape "square"]
+
   set room 0
 end
 
