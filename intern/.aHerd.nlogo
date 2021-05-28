@@ -45,7 +45,9 @@ turtles-own[
   is_IN?
   is_IP?
   is_CP?
+  ;; 0 là lợn nái, 1 là lợn đực
   gioi_tinh
+
   room
 ]
 
@@ -119,11 +121,6 @@ to init-turtles
   set is_IP? false
   set is_CP? false
 
-  ;; 0 là cái, 1 đực
-  set gioi_tinh (random 1)
-  if (gioi_tinh = 0) [set shape "circle"]
-  if (gioi_tinh = 1) [set shape "square"]
-
   set room 0
 end
 
@@ -157,6 +154,7 @@ to display_myRoadS
     let p one-of roomS
     setxy ([pxcor] of p) ([pycor] of p)
     init-turtles
+    set gioi_tinh 0
     set age 172 ;;  25 ngày bú sữa mẹ + 147 ngày nuôi lớn
     set is_sow? true
     draw-turtle
@@ -171,6 +169,7 @@ to display_myRoadPW
     let p one-of roomPW
     setxy ([pxcor] of p) ([pycor] of p)
     init-turtles
+    set gioi_tinh (random 2)
     set age 25
     set is_S? false
     set is_IN? true
@@ -182,6 +181,7 @@ to display_myRoadPW
     let p one-of roomPW
     setxy ([pxcor] of p) ([pycor] of p)
     init-turtles
+    set gioi_tinh (random 2)
     set age 25
     set is_sow? false
     set room 1
@@ -204,6 +204,9 @@ to draw-turtle
       if is_IP? = false [set color orange]
     ]
   ]
+
+  if (gioi_tinh = 0) [set shape "circle"]
+  if (gioi_tinh = 1) [set shape "square"]
 end
 
 to date ;;log'
@@ -216,6 +219,7 @@ to add_turtle
     let p one-of roomS
     setxy ([pxcor] of p) ([pycor] of p)
     init-turtles
+    set gioi_tinh (random 2)
     draw-turtle
   ]
 end

@@ -16,7 +16,7 @@ val nb_CP_o = Val[Double]
 val cmds = List(
   "random-seed ${seed}",
   "setup",
-  "while[today <= ${date}][go]")
+  "while[today < ${date}][go]")
             
 val netLogoTask = NetLogo6Task(
     workDirectory/".aHerd.nlogo",
